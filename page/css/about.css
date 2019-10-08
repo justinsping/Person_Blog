@@ -1,0 +1,62 @@
+.about_me {
+    min-height: 20px;
+    background: #f5f5f5;
+    width: 96%;
+    text-align: left;
+    border-radius: 4px;
+    box-shadow: 1px 1px 10px #888888;
+    padding: 10px 15px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0px;
+    border-top: 1px solid #b9b9b9;
+}
+.about_me > .text > h2 {
+    font-size: 20px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.about_me > .text > p {
+    padding: 0px 0px 10px;
+    font-size: 14px;
+}
+
+.about_comments {
+    width: 100%;
+}
+
+.about_comments .msg {
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+}
+
+.about_comments .comments-box {
+    width: 95%;
+    background: #d9edf7;
+    border: 1px dashed #7ca4c1;
+    padding: 10px 10px 20px 10px;
+    color: #31708f;
+    text-align: left;
+}
+
+.about_comments .comments-box span {
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.about_comments .comments-box div {
+    display: inline-block;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+/*guestbook*/

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="/"></a>
+            </h1>
+            <ul class="menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/sitemap.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/guestbook.html">留言</a></li>
+                <li><a href="/edit_everyday.html">每日一句</a></li>
+                <li><a href="/edit_blog.html">每日一章</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="every_day" id="every_day">
+                <span>
+                    每日一句
+                    <span class="glyphicon"></span>
+                </span>
+                <p v-html="getContent"></p>
+            </div>
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList" :key="article.id">
+                    <a :href="article.link" class="article_title">{{article.title}}</a>
+                    <p class="article_content" v-html="article.content">
+<!--                        {{article.content}}-->
+                    </p>
+                    <div class="article_foot">发布于 {{article.date}} |  浏览({{article.views}}) | tags：{{article.tags}}</div>
+                </div>
+                <div class="page_tool">
+                    <ul>
+<!--                        页面要动态生成-->
+                        <li v-for="item in pageNumList" @click="jumpTo(item.page)" :class="{now_page: (item.text == page)}">
+                            {{item.text}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="right_module" id="random_tags">
+                <div class="module_title">随机标签云(暂不支持查询)</div>
+                <a href="#" v-for="tag in tags" :style="{color:randomColor(), fontSize:randomSize()}">{{tag}}</a>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div class="module_title">最近热门</div>
+                <ul v-for="temp in titleList">
+                    <li><a :href="temp.link">{{temp.title}}</a></li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comments">
+                <div class="module_title">最近评论</div>
+                <ul>
+                    <li v-for="item in commentList">
+                        <div>
+                            <span>{{item.user}}</span>
+                            <span class="pull_right">{{item.date}}</span>
+                        </div>
+                        <P>{{item.comment}}</P>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div class="module_title">友情链接(不稳定的站可能会被我直接删除)</div>
+                <table>
+                    <tbody>
+                     <tr>
+                        <td><a href="#">挨踢茶馆</a></td>
+                        <td><a href="#">佛布朗斯基</a></td>
+                     </tr>
+                     <tr>
+                         <td><a href="#">挨踢茶馆</a></td>
+                         <td><a href="#">佛布朗斯基</a></td>
+                     </tr>
+                     <tr>
+                         <td><a href="#">挨踢茶馆</a></td>
+                         <td><a href="#">佛布朗斯基</a></td>
+                     </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <ul>
+            <li><a href="#">C/C++</a></li>
+            <li><a href="#">C/C++</a></li>
+            <li><a href="#">C/C++</a></li>
+            <li><a href="#">C/C++</a></li>
+            <li><a href="#">C/C++</a></li>
+        </ul>
+        <p>Copyright © 2010-2019 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备号站长统计</p>
+    </footer>
+    <script src="js/axios.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/base.js"></script>
+</body>
+</html>

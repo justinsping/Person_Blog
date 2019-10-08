@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>博客编辑</title>
+    <title>每日一句编辑</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="opensource rich wysiwyg text editor jquery bootstrap execCommand html5" />
     <meta name="description" content="This tiny jQuery Bootstrap WYSIWYG plugin turns any DIV into a HTML5 rich text editor" />
@@ -18,16 +18,8 @@
     <script src="bootstrap-wysiwyg-master/external/google-code-prettify/prettify.js"></script>
 		<link href="bootstrap-wysiwyg-master/index.css" rel="stylesheet">
     <script src="bootstrap-wysiwyg-master/bootstrap-wysiwyg.js"></script>
-    <script>
-      function submit() {
-        alert("提交");
-        var title = $("#blog_title").html();
-        var tag = $("#blog_tags").html();
-        var content = $("#editor").html();
-      };
-    </script>
     <style>
-      .sumbitBtn {
+      .submitBtn {
         margin-top: 10px;
         width: 50px;
 
@@ -37,9 +29,7 @@
   <body>
 
       <div class="container">
-        <h1>文章编辑</h1>
-        <input type="text" placeholder="输入标题" id="blog_title">
-        <input type="text" placeholder="输入标签，用逗号隔开" id="blog_tags">
+        <h3>每日一句编辑</h3>
         <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
           <div class="btn-group">
             <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b
@@ -97,7 +87,7 @@
         <div id="editor">
           Go ahead&hellip;
         </div>
-        <button onclick="submit()" class="sumbitBtn">提交</button>
+        <button onclick="submit()" class="submitBtn">提交</button>
       </div>
 
 <script>
@@ -139,6 +129,39 @@
 	$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
     window.prettyPrint && prettyPrint();
   });
+</script>
+<script>
+        function submit() {
+          // alert("提交");
+          var content = $("#editor").html();
+
+          // var xmlHttp = null;
+          // xmlHttp = new XMLHttpRequest();
+          // xmlHttp.open("post", "/editEveryDay", true);
+          // xmlHttp.send(content);
+          //
+          // xmlHttp.onreadystatechange = function () {
+          //   if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+          //     console.log(xmlHttp.responseText);
+          //   } else {
+          //     alert("失败");
+          //   }
+          // }
+
+          $.ajax({
+            url: "/editEveryDay",
+            method: "POST",
+            data: content,
+            success: function (resp) {
+              var result = JSON.parse(resp);
+              alert(result.msg);
+              $("#editor").html("");
+            },
+            error: function (resp) {
+              console.log(resp)
+            }
+          })
+        };
 </script>
   </body>
 </html>

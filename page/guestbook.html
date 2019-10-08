@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+        <h1 class="logo">
+            <a href="/"></a>
+        </h1>
+        <ul class="menu">
+            <li><a href="/">首页</a></li>
+            <li><a href="/sitemap.html">地图</a></li>
+            <li><a href="/about.html">关于</a></li>
+            <li><a href="/guestbook.html">留言</a></li>
+        </ul>
+        <div class="search_bar">
+            <input type="text" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+        <div class="about_me">
+            <div class="text">
+                <h2><strong>留下你的痕迹</strong></h2>
+                <hr>
+                <p>博主世平，性别男，江西省。</p>
+                <p>
+                    能熟练编写良好风格规范的HTML和CSS，仿写过淘宝，京东，奇秀直播等网页。<br>
+                    动态主要专研Js，以JS和jQuery实现插件设计及编写，对设计模式有一定认识。<br>
+                    能熟练使用HTML5（canvas、video等）和CSS3（动态，过渡效果）常用元素。<br>
+                    网页制作中常用bootstrap进行响应式布局开发。<br>
+                    对网络知识五层网络模型，HTTP，AJax，跨域等知识有较深了解。<br>
+                    有用微信语言开发过微信小程序的项目经验。<br>
+                    前端主流开发框架，主要熟练使用VUE配合Element-ui进行开发。<br>
+                    兴趣广泛，略懂后端，能使用nodeJS实现（web->server->dao)的web服务器与客户端的交互。<br>
+                    熟悉使用webpack，gulp，vue-cli等构建打包工具以及git分布式版本控制工具。<br>
+                </p>
+                <p>
+                    Github：<a href="https://github.com/justinsping">https://github.com/justinsping</a><br>
+                    技术博客：<a href="https://blog.csdn.net/weixin_42321292">https://blog.csdn.net/weixin_42321292</a><br>
+                </p>
+            </div>
+        </div>
+        <div class="about_comments">
+            <span class="msg">关于：目前有66 条留言</span>
+            <div class="comments-box">
+                <span><b>cjh333</b>: 发表于 2018年06月26日 12:25[回复]</span>
+                <div>lsjfjsofjsjflsdjf</div>
+            </div>
+        </div>
+    </div>
+        <div class="content_right">
+            <div class="right_module" id="random_tags">
+                <div class="module_title">随机标签云(暂不支持查询)</div>
+                <a href="#" v-for="tag in tags" :style="{color:randomColor(), fontSize:randomSize()}">{{tag}}</a>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div class="module_title">最近热门</div>
+                <ul v-for="temp in titleList">
+                    <li><a :href="temp.link">{{temp.title}}</a></li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comments">
+                <div class="module_title">最近评论</div>
+                <ul>
+                    <li v-for="item in commentList">
+                        <div>
+                            <span>{{item.user}}</span>
+                            <span class="pull_right">{{item.date}}</span>
+                        </div>
+                        <P>{{item.comment}}</P>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div class="module_title">友情链接(不稳定的站可能会被我直接删除)</div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><a href="#">挨踢茶馆</a></td>
+                        <td><a href="#">佛布朗斯基</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">挨踢茶馆</a></td>
+                        <td><a href="#">佛布朗斯基</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">挨踢茶馆</a></td>
+                        <td><a href="#">佛布朗斯基</a></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer">
+    <ul>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">C/C++</a></li>
+        <li><a href="#">C/C++</a></li>
+    </ul>
+    <p>Copyright © 2010-2019 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备号站长统计</p>
+</footer>
+
+    <script src="js/axios.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/base.js"></script>
+</body>
+</html>
